@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-
+//fgg
 int main() {
 	int n, m, soma;
 	printf("Entre com um dois valores, um limite inferior e um superior \npara classificacao dos numeros desse intervalo: \n");
