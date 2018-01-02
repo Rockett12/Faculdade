@@ -30,7 +30,7 @@ int main() {
 		else if(soma>n)
 			puts("abundante");
 		else
-            puts("perfeito");
+			puts("perfeito");
 
 
 	}
