@@ -26,11 +26,11 @@ int main() {
 			}
 		}
 		if(soma<n)
-			puts("deficiente");
+			puts("Deficiente");
 		else if(soma>n)
-			puts("abundante");
+			puts("Abundante");
 		else
-			puts("perfeito");
+			puts("Perfeito");
 
 
 	}
