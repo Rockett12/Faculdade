@@ -31,8 +31,7 @@ int main() {
 			puts("Abundante");
 		else
 			puts("Perfeito");
-
-
+		
 	}
 
 
