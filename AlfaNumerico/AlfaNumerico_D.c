@@ -34,7 +34,7 @@ void inicializa(int roman[])
 	roman[(int)'D'-'A'] = 500;
 	roman[(int)'M'-'A'] = 1000;
 }
-
+//
 int rtoa(int roman[],char str_num[], int tam)
 {
 	int i=0, atual, anterior, soma=0;
