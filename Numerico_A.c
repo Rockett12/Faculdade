@@ -17,7 +17,7 @@ int main()
         printf("\n\n      Calculo do valor de PI\n\n");
         printf("determine o passo de integracao (no intervalo [0,1]): ");
 
-		scanf("%lf", &h);
+	scanf("%lf", &h);
         pi = calculo_PI(h);
 
         printf("valor de PI: %.6lf\n", pi);
