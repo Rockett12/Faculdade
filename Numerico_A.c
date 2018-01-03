@@ -1,96 +1,86 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#define TRUE 1
-typedef struct {
-    char nome[105];
-    double media;
-    short int recomendacao; /*1- Altamente rec. 2- Fortemente rec. 3- Recomendado 4 - Nao recomendado*/
-} Solicitante;
 
-void setRecommend(Solicitante* aluno);
-void getRecommend(short int);
-double mediaGeral(const Solicitante alunos[], int n, int vec[]);
-
+double fObj_PI(double);
+double calculo_PI(double);
+double fObf_G(double);
+double calculo_integral_D(double, double, double);
 
 int main()
 {
-    char end[105] = "FIM DA LISTA";
-    int recs[5] = {0}; /* vetor que guarda o a quantidade de cada recomendacao*/
-    Solicitante aluno[500];
-    int i=0, n;
-    double mediag;
+    int choice;
+    double h, pi,a,b, resp;
+    printf("escolha o que fazer:\n1 - Calcular o valor de PI\n2 - Calcular a integral definida de x^2\n");
+    scanf("%d", &choice);
 
-    while(TRUE)
+    if(choice==1)
     {
-        printf("digite o nome do solicitante (ou FIM DA LISTA): ");
-        gets(aluno[i].nome);
-        if(strcmp(aluno[i].nome, end)==0)
-            break;
-        printf("insira a media do historico escolar desse estudante: ");
-        scanf("%lf%*c", &aluno[i].media);
-        fflush(stdin);
-        setRecommend(aluno+i);
-        i++;
+        printf("\n\n      Calculo do valor de PI\n\n");
+        printf("determine o passo de integracao (no intervalo [0,1]): ");
+
+		scanf("%lf", &h);
+        pi = calculo_PI(h);
+
+        printf("valor de PI: %.6lf\n", pi);
+    }
+    else
+    {
+        printf("\n\n     Calculo da integral definida de x^2\n\n");
+        printf("defina os limites de integracao [a,b]\nvalor de a: ");
+        scanf("%lf", &a);
+        printf("valor de b: ");
+        scanf("%lf", &b);
+        printf("defina o passo de integracao: ");
+        scanf("%lf", &h);
+        resp = calculo_integral_D(a, b, h);
+
+        printf("O valor da integral definida de x^2 de %.2lf a %.2lf e: %.5lf\n\n", a, b, resp);
 
     }
-    n = i;
-	system("cls");
-    printf("\n       Relacao de solicitantes\n\n");
-    for(i = 0; i<n; ++i)
-    {
-        printf("\nSolicitante %d:\n", i+1);
-        printf("Nome: "), puts(aluno[i].nome);
-        printf("Media: %.2lf%%\n", aluno[i].media);
-        getRecommend(aluno[i].recomendacao);
-    }
 
-    mediag = mediaGeral(aluno, n, recs);
-
-    printf("\nMedia Geral dos Solicitantes: %.2lf%%\n", mediag);
-    printf("Numero de solicitantes Altamente Recomendados: %d\n", recs[1]);
-    printf("Numero de solicitantes Fortemente Recomendados: %d\n", recs[2]);
-    printf("Numero de solicitantes Recomendados: %d\n", recs[3]);
-    printf("Numero de solicitantes Nao Recomendados: %d\n", recs[4]);
 
     return 0;
+
 }
 
-void setRecommend(Solicitante* aluno)
+double fObf_G(double x) /*Funcao objetivo genérica*/
 {
-    if(aluno->media >= 90)
-        aluno->recomendacao = 1;
-    else if(aluno->media >= 80)
-        aluno->recomendacao = 2;
-    else if(aluno->media >= 70)
-        aluno->recomendacao = 3;
-    else
-        aluno->recomendacao = 4;
+    return x*x;
 }
 
-void getRecommend(short int j)
+double calculo_integral_D(double a, double b, double h)/*calculo da integral definida*/
 {
-    if(j==1)
-        puts("Altamente Recomendado");
-    else if(j==2)
-        puts("Fortemente Recomendado");
-    else if(j==3)
-        puts("Recomendado");
-    else
-        puts("Nao Recomendado");
-}
-
-double mediaGeral(const Solicitante alunos[],int n,int vec[])
-{
-    int i, j;
-    double medg=0;
-    for(i =0; i<n; ++i)
+    double tmp, x, area=0;
+    if(a>b)
     {
-        medg+= alunos[i].media;
-        j = (int) alunos[i].recomendacao;
-
-        ++vec[j];
+        tmp = a;
+        a = b;
+        b = tmp;
+    }
+    x = a;
+    while(x+h<=b)
+    {
+        area+=(fObf_G(x)+fObf_G(x+h))*h/2.0;
+        x+=h;
     }
 
-    return medg/(double) n;
+    return area;
+
+}
+
+double fObj_PI(double x) /*Função objetivo para PI*/
+{
+
+    return 1/(1.0+x*x);
+}
+
+double calculo_PI(double h)
+{
+    double x=0, area=0;
+    while(x+h<=1)
+    {
+        area+=(fObj_PI(x)+fObj_PI(x+h))*h/2.0;
+        x+=h;
+    }
+
+    return 4*area;
 }
