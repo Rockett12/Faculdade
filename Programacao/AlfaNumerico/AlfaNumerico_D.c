@@ -45,21 +45,14 @@ int rtoa(int roman[],char str_num[], int tam)
             atual = roman[(int)str_num[i]-'A'];
             anterior = roman[(int)str_num[i-1]-'A'];
 
-            if(i != tam-1)
-            {
-                if(atual < anterior || atual == anterior)
-                    soma+= anterior;
-                else
-                    soma-= anterior;
-            }
+            if(atual > anterior)
+                soma-= anterior;
             else
-            {
-                if(atual < anterior || atual == anterior)
-                    soma+= atual+anterior;
-                else
-                    soma+= atual-anterior;
-            }
+                soma+= anterior;
+           
         }
+        
+        soma+= roman[(int)str_num[i-1]-'A'];
 
         return soma;
     }
