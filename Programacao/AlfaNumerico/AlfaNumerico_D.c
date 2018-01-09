@@ -34,35 +34,26 @@ void inicializa(int roman[])
     roman[(int)'D'-'A'] = 500;
     roman[(int)'M'-'A'] = 1000;
 }
-//
+
 int rtoa(int roman[],char str_num[], int tam)
 {
     int i=0, atual, anterior, soma=0;
-    if(tam!=1)
+
+    atual = roman[(int)str_num[i]-'A'];
+    for(i=1; i<tam; ++i)
     {
-        for(i=1; i<tam; ++i)
-        {
-            atual = roman[(int)str_num[i]-'A'];
-            anterior = roman[(int)str_num[i-1]-'A'];
+        anterior = atual;
+        atual = roman[(int)str_num[i]-'A'];
 
-            if(i != tam-1)
-            {
-                if(atual < anterior || atual == anterior)
-                    soma+= anterior;
-                else
-                    soma-= anterior;
-            }
-            else
-            {
-                if(atual < anterior || atual == anterior)
-                    soma+= atual+anterior;
-                else
-                    soma+= atual-anterior;
-            }
-        }
+        if(atual > anterior)
+            soma-= anterior;
+        else
+            soma+= anterior;
 
-        return soma;
     }
 
-    return roman[(int)str_num[i]-'A'];
+    soma+= roman[(int)str_num[i-1]-'A'];
+
+    return soma;
+
 }
