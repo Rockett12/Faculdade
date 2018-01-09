@@ -4,7 +4,7 @@ int isPrime(int);
 
 int main()
 {
-    int i,x;
+    int x;
     printf("Insira seu numero: ");
     scanf("%d",&x);
     if(isPrime(x))
