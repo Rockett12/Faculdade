@@ -65,10 +65,10 @@ void sylDiv(char word[], int sombra[], int i)
                     putchar(word[j]);
                     putchar('-');
                 }
-				else
-				{
-					putchar(word[j]);
-				}
+                else
+                {
+                    putchar(word[j]);
+                }
             }
             else if(j+1<i && word[j]==word[j+1]) /** vogais identicas **/
             {
