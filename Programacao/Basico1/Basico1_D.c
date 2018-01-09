@@ -1,20 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
+int isPrime(int);
+
 int main()
 {
     int i,x;
     printf("Insira seu numero: ");
     scanf("%d",&x);
-    for(i=2;i*i<=x;i++){
-        if(x%i==0){
-            printf("Numero nao primo.\n");
-            return 0;
-        }
-    }
-    if(x==1){
-        printf("Numero nao primo.\n");
-        return 0;
-    }
-    printf("Numero primo!\n");
+    if(isPrime(x))
+        printf("%d eh primo!\n", x);
+    else
+        printf("%d nao eh primo!\n", x);
+
     return 0;
+}
+
+int isPrime(int x)
+{
+    int i;
+    if(x==1)
+        return 0;
+    for(i = 2; i*i<=x; ++i)
+        if(x%i==0)
+            return 0;
+
+    return 1;
 }
