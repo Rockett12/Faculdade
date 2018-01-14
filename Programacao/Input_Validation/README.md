@@ -1,5 +1,5 @@
 # Input validation
-Para um trabalho de validação de entrada criamos esse sistema básico.
+Para um trabalho de validação de entrada criamos esse sistema bancário básico.
 
 # Contributors
 - Angelo Ricardo;

@@ -50,13 +50,13 @@ int main()
     indiceMax = carregarDados(vet);
 
     while(on)
-	{
+    {
         system("cls");
         printf("\n      *BANK OF HOPE v0.9*        \n");
         printf("\n\n1 - LOGIN\n2 - CRIAR CONTA\n3 - SAIR\n");
 
         while(scanf("%d",&option)!=1 || option>3 || option<1)
-		{
+        {
             fflush(stdin);
             printf("Entrada nao reconhecida pelo sistema. Tente novamente.\n");
 
@@ -71,7 +71,7 @@ int main()
             {
                 logado = 1;
                 while(logado)
-				{
+                {
                     system("cls");
                     printf("\n  *LOGADO*    \n");
                     printf("\nConta de ");
@@ -79,14 +79,14 @@ int main()
                     printf("\n1 - Deposito\n2 - Transferencias\n3 - Sacar dinheiro\n4 - Emitir saldo\n5 - Desativar conta\n6 - Logout\n");
 
                     while(scanf("%d",&option2)!= 1 || option2>6 || option2<1)
-					{
+                    {
                         fflush(stdin);
                         printf("Entrada nao reconhecida pelo sistema. Tente novamente.\n");
                     }
                     fflush(stdin);
 
                     while(1)
-					{
+                    {
                         if(option2 == 1)
                         {
                             depositar(vet+idLogin);
@@ -134,7 +134,7 @@ int main()
                 }
             }
             else
-			{
+            {
                 continuar();
                 continue;
             }
@@ -161,15 +161,15 @@ int carregarDados(Conta contas[]) /*Retorna indiceMax*/
     FILE *arquivo;
     arquivo=fopen("bankSys.txt","r");
     if(arquivo!=NULL)
-	{
-		rewind(arquivo);
-		while((fscanf(arquivo,"%d\n",&contas[i].nroConta))!= EOF)
-		{
+    {
+        rewind(arquivo);
+        while((fscanf(arquivo,"%d\n",&contas[i].nroConta))!= EOF)
+        {
             fgets(contas[i].nome,150,arquivo);
             fscanf(arquivo,"%hd\n%s\n%hd %hd %hd\n%lf\n%hd\n",&contas[i].estadocivil,contas[i].senha,&contas[i].dataDeNascimento.dia,&contas[i].dataDeNascimento.mes,&contas[i].dataDeNascimento.ano,&contas[i].saldo,&contas[i].status);
-			i++;
-		}
-		printf("Carregado!\n");
+            i++;
+        }
+        printf("Carregado!\n");
     }
     else{
         printf("ERROR 404\n");
@@ -181,7 +181,7 @@ int carregarDados(Conta contas[]) /*Retorna indiceMax*/
 
 void salvarDados(Conta v[],int indiceMax)
 {
-	fflush(stdin);
+    fflush(stdin);
     int i;
     FILE* arq = fopen("bankSys.txt", "w");
     rewind(arq);
@@ -218,7 +218,7 @@ int criarConta(Conta contas[],int indiceMax)
     scanf("%hd",&contas[indiceMax].dataDeNascimento.dia);
     fflush(stdin);
     while(1)
-	{
+    {
         if(contas[indiceMax].dataDeNascimento.dia<32 && contas[indiceMax].dataDeNascimento.dia>0)
             break;
         printf("Entrada nao valida. Tente novamente.");
@@ -231,7 +231,7 @@ int criarConta(Conta contas[],int indiceMax)
     scanf("%hd",&contas[indiceMax].dataDeNascimento.mes);
     fflush(stdin);
     while(1)
-	{
+    {
         if(contas[indiceMax].dataDeNascimento.mes<13 && contas[indiceMax].dataDeNascimento.mes>0)
             break;
         printf("Entrada nao valida. Tente novamente.");
@@ -243,7 +243,7 @@ int criarConta(Conta contas[],int indiceMax)
     scanf("%hd",&contas[indiceMax].dataDeNascimento.ano);
     fflush(stdin);
     while(1)
-	{
+    {
         if(contas[indiceMax].dataDeNascimento.ano<2002 && contas[indiceMax].dataDeNascimento.ano>1900)
             break;
         printf("Entrada nao valida. Tente novamente.");
@@ -253,7 +253,7 @@ int criarConta(Conta contas[],int indiceMax)
     }
     printf("Estado Civil: ");
     while(1)
-	{
+    {
         printf("\nDigite 1 caso seja solteiro(a). Digite 2 caso seja casado(a)\n");
         scanf("%hd",&contas[indiceMax].estadocivil);
         fflush(stdin);
@@ -269,7 +269,7 @@ int criarConta(Conta contas[],int indiceMax)
     gets(senha2);
 
     while(1)
-	{
+    {
         if(strcmp(contas[indiceMax].senha,senha2)==0)
             break;
         printf("As senhas sao diferentes. Tente novamente.\n");
@@ -281,13 +281,13 @@ int criarConta(Conta contas[],int indiceMax)
     printf("Conta criada com sucesso!\n");
     printf("\nDeseja adicionar algum saldo inicial?\nCaso deseje digite 1 caso contrario 2.\n");
     while(scanf("%d",&sim) != 1 || sim < 1 || sim > 2)
-	{
+    {
         printf("Entrada nao reconhecida. Tente novamente.\n");
         fflush(stdin);
     }
     fflush(stdin);
     if(sim == 1)
-	{
+    {
         printf("Insira o valor a ser adicionado: ");
         while(scanf("%lf",&contas[indiceMax].saldo)!=1 || contas[indiceMax].saldo<0)
         {
@@ -451,7 +451,7 @@ int transferencia(Conta v[], int indiceMax, int idLogin)// retorna 1 se a transa
 
     while(scanf("%d", &numConta)!=1 || numConta<0 || numConta>=indiceMax || idLogin == numConta) //validacao do numero da conta
     {
-    	fflush(stdin);
+        fflush(stdin);
         printf("Numero de conta invalido!\n");
         printf("Deseja tentar novamente?\n");
         printf("Sim.......digite 1\nNao......digite 2\n");
@@ -469,10 +469,10 @@ int transferencia(Conta v[], int indiceMax, int idLogin)// retorna 1 se a transa
             printf("Digite o numero da conta de destino: ");
     }
     fflush(stdin);
-	printf("Digite o valor a ser tranferido: ");
+    printf("Digite o valor a ser tranferido: ");
     while( scanf("%lf", &money)!=1 || money<0 || v[idLogin].saldo<money)
     {
-    	fflush(stdin);
+        fflush(stdin);
         if(money<0)
         {
             puts("Entrada Invalida.");
@@ -484,10 +484,10 @@ int transferencia(Conta v[], int indiceMax, int idLogin)// retorna 1 se a transa
         printf("Sim.......digite 1\nNao......digite 2\n");
         while(scanf("%d", &choice)!=1 || choice>2 || choice<1)
         {
-        	fflush(stdin);
-        	puts("Escolha invalida!");
-        	printf("Deseja tentar novamente?\n");
-        	printf("Sim.......digite 1\nNao......digite 2\n");
+            fflush(stdin);
+            puts("Escolha invalida!");
+            printf("Deseja tentar novamente?\n");
+            printf("Sim.......digite 1\nNao......digite 2\n");
 
         }
         fflush(stdin);
@@ -497,7 +497,7 @@ int transferencia(Conta v[], int indiceMax, int idLogin)// retorna 1 se a transa
                 printf("Digite o valor a ser tranferido: ");
 
     }
-	fflush(stdin);
+    fflush(stdin);
 
 
     int i;
@@ -527,7 +527,7 @@ int transferencia(Conta v[], int indiceMax, int idLogin)// retorna 1 se a transa
 int desativarConta(Conta* user)
 {
     int choice;
-	printf("Tem certeza que deseja desativar sua conta?\n\n");
+    printf("Tem certeza que deseja desativar sua conta?\n\n");
     printf("Sim......Digite 1\nNao......Digite 2\n");
     while(scanf("%d", &choice)!=1 || choice>2 || choice<1)
     {
@@ -536,7 +536,7 @@ int desativarConta(Conta* user)
 
         puts("Entrada invalida!");
         printf("Tem certeza que deseja desativar sua conta?\n\n");
-	    printf("Sim......Digite 1\nNao......Digite 2\n");
+        printf("Sim......Digite 1\nNao......Digite 2\n");
 
     }
     fflush(stdin);
