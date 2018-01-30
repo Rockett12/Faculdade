@@ -3,10 +3,10 @@
 
 void bubbleSort(int*, int);
 void selectionSort(int*, int);
-void mergeSort(int, int, int*);
-static void merge(int, int ,int, int*);
-static int particiona(int*, int, int);
-void quickSort(int*, int, int);
+void mergeSort(int, int, int*); // by: Paulo Feofiloff IME-USP
+static void merge(int, int ,int, int*); // by: Paulo Feofiloff IME-USP
+static int particiona(int*, int, int); // by: Paulo Feofiloff IME-USP
+void quickSort(int*, int, int); // by: Paulo Feofiloff IME-USP
 
 int main()
 {
