@@ -2,7 +2,7 @@
 Implementation to some data structures.
 
 # Soon
-	- Complex Numbers.
-	- Lists.
-	- Queues.
-	- Stacks.
+- Complex Numbers.
+- Lists.
+- Queues.
+- Stacks.
