@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1521768420 source:c:\users\thays\documents\faculdade\estruturas_de_dados\tvec\main.cpp
+	<iostream>
+	"TVector.h"
+
+1521770924 c:\users\thays\documents\faculdade\estruturas_de_dados\tvec\tvector.h
+	<cmath>
+
+1521768420 source:c:\users\thays\documents\misc\tvec\main.cpp
+	<iostream>
+	"TVector.h"
+
+1521769128 c:\users\thays\documents\misc\tvec\tvector.h
+	<cmath>
+
+1521769110 source:c:\users\thays\documents\misc\tvec\tvector.cpp
+	"TVector.h"
+
+1521769110 source:c:\users\thays\documents\faculdade\estruturas_de_dados\tvec\tvector.cpp
+	"TVector.h"
+
+1521768420 source:c:\users\thays\documents\faculdade\estruturas_de_dados\tvector\main.cpp
+	<iostream>
+	"TVector.h"
+
+1521771194 c:\users\thays\documents\faculdade\estruturas_de_dados\tvector\tvector.h
+	<cmath>
+
+1521770996 source:c:\users\thays\documents\faculdade\estruturas_de_dados\tvector\tvector.cpp
+	"TVector.h"
+
